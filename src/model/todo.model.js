@@ -1,4 +1,4 @@
-const mongoose = require('../schemas/configs');
+const mongoose = require('../utils/configs');
 
 const todoSchemas = require('../schemas/todo.schemas');
 

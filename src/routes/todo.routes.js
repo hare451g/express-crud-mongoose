@@ -1,28 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const todoModel = require('../model/todo.model');
-
 const status = require('../constants');
 
+const TodoServices = require('../services/todo.services');
+
 // define the home page route
-router.post('/', (req, res) => {
-    const query = new todoModel({
-        name: 'Belajar node',
-        completed: false,
-    });
-
-    query.save((err, query) => {
-        res.status(status.HTTP_STATUS.SUCCESS).json(query);
-        
-    })
-})
-
-router.get('/', (req, res) => {
-    todoModel.find((err, result) => 
-        res.status(status.HTTP_STATUS.SUCCESS).json(result)
-    );
-})
+router.post('/', (req, res) => TodoServices.createNewTodo(req, res));
+router.get('/', (req, res) => TodoServices.fetchAllTodo(req, res));
 
 // define the about route
 router.get('/details/:id', function (req, res) {

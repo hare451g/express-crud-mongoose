@@ -2,8 +2,10 @@
 const mongoose = require('../utils/configs');
 
 const todoSchema = new mongoose.Schema({
-    name: String,
-    completed: Boolean,
+    name: { type: String, required: true },
+    completed: { type: Boolean, required: true },
+    created_at: Date,
+    updated_at: Date,
 });
 
 module.exports = todoSchema;

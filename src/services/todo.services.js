@@ -57,7 +57,7 @@ const updateTodo = (req, res) => {
                 res.status(status.HTTP_STATUS.NOT_FOUND).json({ message: 'Not found !'});
             }
             result.name = req.body.todo.name || result.name,
-            result.completed = req.body.todo.completed || result.name,
+            result.completed = req.body.todo.completed || !result.completed,
             result.updated_at = moment(),
             
             result.save((err, updated) => {

@@ -1,11 +1,12 @@
-// setup express js
 const express = require('express');
-const app = express();
-
-// setup body-parser
 const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todo.routes');
+const cors = require('cors');
 
+const app = express();
+// tell express to use cors
+app.use(cors());
+app.options('*', cors())
 // tell express to use body parser
 app.use(bodyParser.json());
 
